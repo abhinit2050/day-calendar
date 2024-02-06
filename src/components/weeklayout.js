@@ -50,10 +50,10 @@ let splitDateArray =[];
 
 
     
-    // //, "8", "9", "10", "11", "12", "13","14","15"
+     //, "8", "9", "10", "11", "12", "13","14","15"
     // const originalArray = ["1","2", "3", "4", "5", "6", "7","8", "9", "10", "11", "12", "13","14","15",
     //                        "16","17", "18", "19", "20", "21", "22","23", "24", "25", "26", "27", "28","29","30","31"," "," "," "," ",];
-    // //const chunkSize = 7;
+     //const chunkSize = 7;
     // newArrayChunks = splitArrayIntoChunks(originalArray, 7);
     
     // console.log(newArrayChunks);
