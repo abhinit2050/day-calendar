@@ -68,30 +68,33 @@ function Calendar() {
 
 
     return (
-        <>
-        
-            <div className="top">
-            <div className="headerPart">
-                {nowDay.MM} {nowDay.YYYY}
-            </div>
-            
-            <div className="time">
-                
-                <p>{nowTime.HH>9 ?nowTime.HH:nowTime.HH==0?`12`:`0${nowTime.HH}`}:</p> <p>{nowTime.MM}:</p><p>{nowTime.SS}</p>
-                &nbsp;
-                <p>{nowTime.half}</p>
+      <>
+        <div className="top">
+          <div className="headerPart">
+            {nowDay.MM} {nowDay.YYYY}
+          </div>
 
-            </div>
-            </div>
-            
-        
-    
-      <div>
-        <Weeklayout />
-      </div>
-       
-        </>
-    )
+          <div className="time">
+            <p>
+              {nowTime.HH > 9
+                ? nowTime.HH
+                : nowTime.HH == 0
+                ? `12`
+                : `0${nowTime.HH}`}
+              :
+            </p>{" "}
+            <p>{nowTime.MM}:</p>
+            <p>{nowTime.SS}</p>
+            &nbsp;
+            <p>{nowTime.half}</p>
+          </div>
+        </div>
+
+        <div>
+          <Weeklayout />
+        </div>
+      </>
+    );
 }
 
 export default Calendar

@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import './weeklayout.css'
 
 const DayCard = (props)=>{
