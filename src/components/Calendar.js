@@ -78,7 +78,7 @@ function Calendar() {
             <p>
               {nowTime.HH > 9
                 ? nowTime.HH
-                : nowTime.HH == 0
+                : nowTime.HH === 0
                 ? `12`
                 : `0${nowTime.HH}`}
               :

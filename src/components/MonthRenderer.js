@@ -10,20 +10,15 @@ export function MonthArrayMaker(maxDays){
     }
 
     let finalDateArray=[];
-    let newArrayChunks=[];
     let splitDateArray =[];
 
-
-    const dayAsString = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     const currentDate = new Date().getDate();
     const currentDayVal =new Date().getDay();
-    const currentDay =  dayAsString[currentDayVal]
-
     const diffStart = currentDate-1;
     const firstDay = (currentDayVal-diffStart);
     const firstDayString = (7+(firstDay%7));
 
-    for(let p=0;p<(maxDays+firstDayString);p++){   //29 is maximum number of days in a a month
+    for(let p=0;p<(maxDays+firstDayString);p++){  
     
     if(p<firstDayString){
         finalDateArray.push("")

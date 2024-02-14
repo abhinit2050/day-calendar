@@ -7,16 +7,27 @@ function Weeklayout() {
   
 const [renderDates, setRenderDates] = useState([]);
 let maxDays;
+
+function isLeapYear(year) {
+  return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+}
     useEffect(()=>{
       
       const currentMonth = new Date().getMonth();
+      const currentYear = new Date().getFullYear();
 
       if([0, 2, 4, 6, 7, 9, 11].includes(currentMonth)){
           maxDays = 31
       } else if([3, 5, 8, 10].includes(currentMonth)){
         maxDays = 30
     } else {
-      maxDays=29
+      let isLeap = isLeapYear(currentYear);
+      if(isLeap){
+        maxDays = 29;
+      } else {
+        maxDays = 28;
+      }
+      
     }
 
       const finalArrayResult = MonthArrayMaker(maxDays);
