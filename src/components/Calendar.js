@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import Weeklayout from './weeklayout';
 import './calendar.css';
+import { DateContext } from '../dateContext/DateContext';
 
 function Calendar() {
 
@@ -19,45 +20,44 @@ function Calendar() {
         WKD:null
     })
 
+    let currentDate = useContext(DateContext);
+    const [currentTime, setCurrentTime] = useState(new Date());
+
     useEffect(()=>{
-        
+  
         const intervalId = setInterval(() => {
-            timeUpdate();
-            dayUpdate();
+            TimeUpdate();
+            DayUpdate();
+            setCurrentTime(new Date());
 
         }, 1000);
 
         return () => clearInterval(intervalId);
     
-    },[])
+    },[currentTime])
 
 
-    function timeUpdate(){
+    function TimeUpdate(){
 
-        const currentDate = new Date();
-       
             setNowTime((prevTime)=>{
 
                 return {
                     ...prevTime,
-                    HH:currentDate.getHours()<12?currentDate.getHours():currentDate.getHours()-12,
-                    MM:currentDate.getMinutes()>9?currentDate.getMinutes():`0${currentDate.getMinutes()}`,
-                    SS:currentDate.getSeconds()>9?currentDate.getSeconds():`0${currentDate.getSeconds()}`,
-                    half:currentDate.getHours()<12?'AM':'PM'
+                    HH:currentTime.getHours()<12?currentTime.getHours():currentTime.getHours()-12,
+                    MM:currentTime.getMinutes()>9?currentTime.getMinutes():`0${currentTime.getMinutes()}`,
+                    SS:currentTime.getSeconds()>9?currentTime.getSeconds():`0${currentTime.getSeconds()}`,
+                    half:currentTime.getHours()<12?'AM':'PM'
                 }
                 
             })
     }
 
-    function dayUpdate(){
-        
-        const currentDate = new Date();
+    function DayUpdate(){
         
         setNowDay((prevDay)=>{
             return {
                 ...prevDay,
-                DD:currentDate.getDate()>9?currentDate.getDate():`0${currentDate.getDate()}`,            
-                // MM:currentDate.getMonth()>10?currentDate.getMonth()+1:`0${currentDate.getMonth()+1}`,            
+                DD:currentDate.getDate()>9?currentDate.getDate():`0${currentDate.getDate()}`,                        
                 MM:currentDate.toLocaleString('en-US', { month: 'long' }),
                 YYYY:currentDate.getFullYear()
             }

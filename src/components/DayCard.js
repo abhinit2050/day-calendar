@@ -1,9 +1,12 @@
-import React from 'react';
-import './weeklayout.css'
+import React,{useContext} from 'react';
+import './weeklayout.css';
+import { DateContext } from '../dateContext/DateContext';
+
 
 const DayCard = (props)=>{
 
-    const todayDate = new Date().getDate();
+    let currentDate = useContext(DateContext);
+    const todayDate = currentDate.getDate();
 
     return(
         <>

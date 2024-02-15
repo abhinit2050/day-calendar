@@ -1,20 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './weeklayout.css';
 import DayCard from './DayCard';
 import { MonthArrayMaker } from './MonthRenderer';
+import { DateContext } from '../dateContext/DateContext';
 
 function Weeklayout() {
   
 const [renderDates, setRenderDates] = useState([]);
 let maxDays;
+let currentDate = useContext(DateContext);
 
 function isLeapYear(year) {
   return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
 }
     useEffect(()=>{
       
-      const currentMonth = new Date().getMonth();
-      const currentYear = new Date().getFullYear();
+      const currentMonth = currentDate.getMonth();
+      const currentYear = currentDate.getFullYear();
 
       if([0, 2, 4, 6, 7, 9, 11].includes(currentMonth)){
           maxDays = 31
@@ -30,7 +32,7 @@ function isLeapYear(year) {
       
     }
 
-      const finalArrayResult = MonthArrayMaker(maxDays);
+      const finalArrayResult = MonthArrayMaker(maxDays, currentDate);
       
       setRenderDates(finalArrayResult);
 

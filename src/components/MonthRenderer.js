@@ -1,4 +1,4 @@
-export function MonthArrayMaker(maxDays){
+export function MonthArrayMaker(maxDays, _currentDate){
 
     function splitArrayIntoChunks(array, chunkSize) {
         const result = [];
@@ -12,8 +12,8 @@ export function MonthArrayMaker(maxDays){
     let finalDateArray=[];
     let splitDateArray =[];
 
-    const currentDate = new Date().getDate();
-    const currentDayVal =new Date().getDay();
+    const currentDate = _currentDate.getDate();
+    const currentDayVal =_currentDate.getDay();
     const diffStart = currentDate-1;
     const firstDay = (currentDayVal-diffStart);
     const firstDayString = (7+(firstDay%7));
